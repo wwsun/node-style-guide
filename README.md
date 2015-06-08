@@ -107,6 +107,8 @@ REST API
 
 1. [20 Useful Commands for Linux Newbies](http://www.tecmint.com/useful-linux-commands-for-newbies/)
 2. [Linux commands every web developer should know](http://www.devcanvas.com/news/linux-commands-every-web-developer-should-know)
+3. PuTTY
+4. Cygwin
 
 ### Browser 浏览器
 
@@ -125,18 +127,91 @@ REST API
 
 ### Version Control System 版本控制系统
 
-## Front-end
+1. [Git](http://git-scm.com/downloads)
+2. [Subversion](https://subversion.apache.org/)
+3. [Github](https://github.com/)
+4. Github for windows/mac
 
-1. [Hammer.js 开源的的触控手势库](http://hammerjs.github.io/)
+### Local Server
+
+1. [MAMP](http://www.mamp.info/en/index.html) - 在MacOS上使用的Mac, Apache, MySQL, 以及PHP等套件。
+2. [XAMPP](https://www.apachefriends.org/zh_cn/index.html) - 流行的PHP开发环境
+3. Tomcat
+4. [GlassFish](https://glassfish.java.net/)
+
+### Node.js
+
+1. [Install Node.js](https://nodejs.org/download)
+2. Express
+
+### Database
+
+1. [Install MongoDB](http://docs.mongodb.org/manual/tutorial/install-mongodb-on-windows/)
+2. MySQL
+3. [SQLite 3 Beyond the Basics](http://www.sitepoint.com/sqlite-3-beyond-basics)
+
+### Cloud Service 云服务
+
+1. Book: [Introducing Github](http://www.amazon.com/Introducing-GitHub-A-Non-Technical-Guide/dp/1491949740)
+2. [Create an ASP.NET web app in Azure App Service](https://azure.microsoft.com/en-us/documentation/articles/web-sites-dotnet-get-started/?rnd=1)
+3. [Getting Started on Heroku](https://devcenter.heroku.com/start)
+4. [Cloud9 - 云端编辑器](https://c9.io/)
+
+## Front-end
 
 ### Reading
 
-1. [How Mobile Friendly Is Your Design? 12 Tips to Follow](http://www.sitepoint.com/mobile-friendly-design-12-tips-follow/)
-2. [Why Ionic is Reigniting the Native vs HTML5 Debate](http://blog.teamtreehouse.com/ionic-reigniting-native-vs-html5-debate)
+JSON
 
-### Tutorial
-2. [Creating a Location Sharing App Using the Ionic Framework](http://www.sitepoint.com/creating-location-sharing-app-using-ionic-framework)
+1. Book: JavaScript高级程序设计
+2. [json.org](http://json.org/)
+2. [A JSON Tutorial. Getting started with JSON using JavaScript and jQuery](http://iviewsource.com/codingtutorials/getting-started-with-javascript-object-notation-json-for-absolute-beginners/)
+
+Ajax
+
+1. MDN: [Ajax](https://developer.mozilla.org/en/docs/AJAX)
+
+Cross-Domain 跨域调用
+
+1. Wiki: [JSONP](http://en.wikipedia.org/wiki/JSONP)
+2. Wiki: [CORS](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
+3. [Using CORS](http://www.html5rocks.com/en/tutorials/cors/)
+4. [Learn more about CORS](http://enable-cors.org/resources.html)
+
+[BootStrap](http://getbootstrap.com/)
+
+1. [极客学院：Bootstrap公开课](http://www.jikexueyuan.com/path/bootstrap/)
+
+LESS
+
+1. [Getting Started with LESS](http://lesscss.org/)
+2. [LESS2CSS - 在线LESS转CSS工具](http://less2css.org/)
+3. [lessphp -  is a compiler for LESS written in PHP](http://leafo.net/lessphp/)
+
+AngularJS
+
+1. Book: AngularJS Up and Running
+2. [AngularJS Tutorial - Learn AngularJS in 30 minutes](http://www.revillweb.com/tutorials/angularjs-in-30-minutes-angularjs-tutorial/)
+3. Book: [Pro AngularJS](http://www.apress.com/9781430264484)
+
+AMD
+
+1. [Why AMD?](http://requirejs.org/docs/whyamd.html)
+2. [Understanding RequireJS for Effective JavaScript Module Loading](http://www.sitepoint.com/understanding-requirejs-for-effective-javascript-module-loading/)
+3. [Organizing your application using Modules (require.js)](http://sports.sina.com.cn/)
+
+### Libaries
+
+1. [Underscore.js - 一个JavaScript辅助函数库](http://underscorejs.org/)
+2. [Hammer.js 开源的的触控手势库](http://hammerjs.github.io/)
+3. jQuery/ UI/ Mobile
 
 ## Back-end
 
-1. [SQLite 3 Beyond the Basics](http://www.sitepoint.com/sqlite-3-beyond-basics)
+### Java EE
+
+### Node.js
+
+### MongoDB
+
+
