@@ -1,8 +1,8 @@
-# Node.js Style Guide() {
+# Node.js 风格指南
 
-### Most of the content is taken from the [Airbnb styleguide](https://github.com/airbnb/javascript)
+### 大部分的内容来源于 [Airbnb styleguide](https://github.com/airbnb/javascript)
 
-Heavily inspired by them as well:
+并且也参考其他一些资料:
 - @caolan's [Node.js styleguide](http://caolanmcmahon.com/posts/nodejs_style_and_structure)
 - @felixge's [Node.js styleguide](https://github.com/felixge/node-style-guide)
 
@@ -32,7 +32,7 @@ Heavily inspired by them as well:
   1. [Contributors](#contributors)
   1. [License](#license)
 
-## Types
+## 类型
 
   - **原始类型**: 当你访问一个原始数据类型时，你直接操作的是它的值
 
@@ -67,7 +67,7 @@ Heavily inspired by them as well:
 
 **[⬆ back to top](#table-of-contents)**
 
-## Objects
+## 对象
 
   - 在对象创建时使用字面量语法
 
@@ -100,7 +100,7 @@ Heavily inspired by them as well:
 
 **[⬆ back to top](#table-of-contents)**
 
-## Arrays
+## 数组
 
   - 使用字面量语法创建数组
 
@@ -153,7 +153,7 @@ Heavily inspired by them as well:
 **[⬆ back to top](#table-of-contents)**
 
 
-## Strings
+## 字符串
 
   - 使用单引号 `''` 表示字符串
 
@@ -246,7 +246,7 @@ Heavily inspired by them as well:
 **[⬆ back to top](#table-of-contents)**
 
 
-## Functions
+## 函数
 
   - 函数表达式:
 
@@ -304,7 +304,7 @@ Heavily inspired by them as well:
 
 
 
-## Properties
+## 属性
 
   - 当访问属性时请使用`.`操作符.
 
