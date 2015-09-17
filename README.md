@@ -591,7 +591,7 @@ Heavily inspired by them as well:
   }
   ```
 
-- 在同步调用中捕获错误
+- 在同步调用中捕获错误，`JSON.parse()`应该使用`try-catch`语句块
 
   ```javascript
   //bad
@@ -609,29 +609,25 @@ Heavily inspired by them as well:
 
 **[⬆ back to top](#table-of-contents)**
 
-## Hoisting
+## 提升
 
-  - Variable declarations get hoisted to the top of their scope, their assignment does not.
+  - 变量声明会被提升到作用域的顶端，而赋值操作则不会。
 
     ```javascript
-    // we know this wouldn't work (assuming there
-    // is no notDefined global variable)
+    // 先看个简单的例子，显然它会抛出错误
     function example() {
       console.log(notDefined); // => throws a ReferenceError
     }
 
-    // creating a variable declaration after you
-    // reference the variable will work due to
-    // variable hoisting. Note: the assignment
-    // value of `true` is not hoisted.
+    // 我们先使用了一个变量，而后再声明并初始化这个变量
+    // 输出结果没有报错，而是 `undefined`，意思是未被初始化
     function example() {
       console.log(declaredButNotAssigned); // => undefined
       var declaredButNotAssigned = true;
     }
 
-    // The interpreter is hoisting the variable
-    // declaration to the top of the scope.
-    // Which means our example could be rewritten as:
+    // 变量声明部分会被提升，赋值部分仍保持不变
+    // 上面的代码等同于
     function example() {
       var declaredButNotAssigned;
       console.log(declaredButNotAssigned); // => undefined
@@ -639,7 +635,7 @@ Heavily inspired by them as well:
     }
     ```
 
-  - Anonymous function expressions hoist their variable name, but not the function assignment.
+  - 匿名函数表达式会提升它们的变量名，但是函数赋值部门不会被提升
 
     ```javascript
     function example() {
@@ -653,7 +649,7 @@ Heavily inspired by them as well:
     }
     ```
 
-  - Named function expressions hoist the variable name, not the function name or the function body.
+  - 命名函数表达式会提升它们的变量名，但函数名或函数体不会被提升。
 
     ```javascript
     function example() {
@@ -681,7 +677,7 @@ Heavily inspired by them as well:
     }
     ```
 
-  - Function declarations hoist their name and the function body.
+  - 函数声明会被整体提升到作用域顶端
 
     ```javascript
     function example() {
@@ -693,32 +689,32 @@ Heavily inspired by them as well:
     }
     ```
 
-  - For more information refer to [JavaScript Scoping & Hoisting](http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting) by [Ben Cherry](http://www.adequatelygood.com/)
+  - 更多信息请参考 [JavaScript Scoping & Hoisting](http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting) by [Ben Cherry](http://www.adequatelygood.com/)
 
 **[⬆ back to top](#table-of-contents)**
 
 
 
-## Conditional Expressions & Equality
+## 条件表达式 & 相等性
 
-  - Use `===` and `!==` over `==` and `!=`.
-  - Conditional expressions are evaluated using coercion with the `ToBoolean` method and always follow these simple rules:
+  - 使用 `===` 和 `!==` 来代替 `==` 和 `!=`.
+  - 条件表达式会被使用`ToBoolean`方法进行强制类型转换。并且服从如下规则：
 
-    + **Objects** evaluate to **true**
-    + **Undefined** evaluates to **false**
-    + **Null** evaluates to **false**
-    + **Booleans** evaluate to **the value of the boolean**
-    + **Numbers** evaluate to **false** if **+0, -0, or NaN**, otherwise **true**
-    + **Strings** evaluate to **false** if an empty string `''`, otherwise **true**
+    + **Objects** 被转换为 **true**
+    + **Undefined** 被转换为 **false**
+    + **Null** 被转换为 **false**
+    + **Booleans** 被转换为 **实际的boolean值**
+    + **Numbers** 被转换为 **false** 如果是 **+0, -0, or NaN**, 其他都为 **true**
+    + **Strings** 被转换为 **false** 如果是空字符串 `''`, 其他都为 **true**
 
     ```javascript
     if ([0]) {
       // true
-      // An array is an object, objects evaluate to true
+      // 数组是对象，对象始终被转换为 `true`
     }
     ```
 
-  - Use shortcuts.
+  - 使用缩减版.
 
     ```javascript
     // bad
@@ -742,14 +738,14 @@ Heavily inspired by them as well:
     }
     ```
 
-  - For more information see [Truth Equality and JavaScript](http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108) by Angus Croll
+  - 更多信息请参考 [Truth Equality and JavaScript](http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108) by Angus Croll
 
 **[⬆ back to top](#table-of-contents)**
 
 
-## Blocks
+## 代码块
 
-  - Use braces with all multi-line blocks.
+  - 所有的多行代码块都要使用大括号，并且不要写在一行
 
     ```javascript
     // bad
@@ -776,9 +772,9 @@ Heavily inspired by them as well:
 **[⬆ back to top](#table-of-contents)**
 
 
-## Comments
+## 注释
 
-  - Use `/** ... */` for multiline comments. Include a description, specify types and values for all parameters and return values.
+  - 使用 `/** ... */` 进行多行注释. 请在你们加入注释说明，指明参数和返回值的类型 
 
     ```javascript
     // bad
@@ -810,7 +806,7 @@ Heavily inspired by them as well:
     }
     ```
 
-  - Use `//` for single line comments. Place single line comments on a newline above the subject of the comment. Put an empty line before the comment.
+  - 使用 `//` 进行单行注释. 请用一个新行来添加注释。并在注释行前增加一个空行。 
 
     ```javascript
     // bad
@@ -840,9 +836,10 @@ Heavily inspired by them as well:
     }
     ```
 
-  - Prefixing your comments with `FIXME` or `TODO` helps other developers quickly understand if you're pointing out a problem that needs to be revisited, or if you're suggesting a solution to the problem that needs to be implemented. These are different than regular comments because they are actionable. The actions are `FIXME -- need to figure this out` or `TODO -- need to implement`.
+  - 如果是为了指明一个错误，请在你的注释前加上`FIXME`或`TODO`前缀来帮助其他开发者快速的了解你的注释意图。
+  其中`FIXME`可以表示这个问题需要解决，或者`TODO`来表示需要被实现的功能块。
 
-  - Use `// FIXME:` to annotate problems
+  - 使用 `// FIXME:` 来注解一个问题。
 
     ```javascript
     function Calculator() {
@@ -854,7 +851,7 @@ Heavily inspired by them as well:
     }
     ```
 
-  - Use `// TODO:` to annotate solutions to problems
+  - 使用 `// TODO:` 来注解一个需要被实现（完成）的任务。
 
     ```javascript
     function Calculator() {
@@ -869,9 +866,9 @@ Heavily inspired by them as well:
 **[⬆ back to top](#table-of-contents)**
 
 
-## Whitespace
+## 空格
 
-  - Use soft tabs set to 2 spaces
+  - 推荐使用2个空格作为缩进
 
     ```javascript
     // bad
@@ -890,7 +887,7 @@ Heavily inspired by them as well:
     }
     ```
 
-  - Place 1 space before the leading brace.
+  - 在所有起始的大括号前加一个空格
 
     ```javascript
     // bad
@@ -916,7 +913,7 @@ Heavily inspired by them as well:
     });
     ```
 
-  - Set off operators with spaces.
+  - 在操作符见使用一个空格
 
     ```javascript
     // bad
@@ -926,7 +923,7 @@ Heavily inspired by them as well:
     var x = y + 5;
     ```
 
-  - End files with a single newline character.
+  - 文件结束后增加一个空行
 
     ```javascript
     // bad
@@ -950,7 +947,7 @@ Heavily inspired by them as well:
     })(this);↵
     ```
 
-  - Use indentation when making long method chains.
+  - 对链接起来的方法使用缩进成多行的形式
 
     ```javascript
     // bad
@@ -983,9 +980,9 @@ Heavily inspired by them as well:
 
 **[⬆ back to top](#table-of-contents)**
 
-## Commas
+## 逗号
 
-  - Leading commas: **Nope.**
+  - 推荐的做法是逗号在每一行的末尾
 
     ```javascript
     // bad
@@ -1036,7 +1033,7 @@ Heavily inspired by them as well:
 **[⬆ back to top](#table-of-contents)**
 
 
-## Semicolons
+## 分号作为语句块的结束
 
   - **Yup.**
 
@@ -1063,9 +1060,9 @@ Heavily inspired by them as well:
 **[⬆ back to top](#table-of-contents)**
 
 
-## Type Casting & Coercion
+## 类型转换 & 强制类型转换
 
-  - Perform type coercion at the beginning of the statement.
+  - 在声明语句的最前端执行强制类型转换.
   - Strings:
 
     ```javascript
@@ -1084,7 +1081,7 @@ Heavily inspired by them as well:
     var totalScore = this.reviewScore + ' total score';
     ```
 
-  - Use `parseInt` for Numbers and always with a radix for type casting.
+  - 使用 `parseInt` 来进行整数的类型转换，并且始终提供一个基数.
 
     ```javascript
     var inputValue = '4';
@@ -1146,9 +1143,9 @@ Heavily inspired by them as well:
 **[⬆ back to top](#table-of-contents)**
 
 
-## Naming Conventions
+## 命名约定
 
-  - Avoid single letter names. Be descriptive with your naming.
+  - 避免使用当个字符命名，使用描述性的名字：
 
     ```javascript
     // bad
@@ -1162,7 +1159,7 @@ Heavily inspired by them as well:
     }
     ```
 
-  - Use camelCase when naming objects, functions, and instances
+  - 对于对象、函数、和实例采用小驼峰（camelCase）命名法
 
     ```javascript
     // bad
@@ -1181,7 +1178,7 @@ Heavily inspired by them as well:
     });
     ```
 
-  - Use PascalCase when naming constructors or classes
+  - 当命名类或构造函数时使用大驼峰或Pascal命名法（PascalCase）
 
     ```javascript
     // bad
@@ -1203,7 +1200,7 @@ Heavily inspired by them as well:
     });
     ```
 
-  - Use a leading underscore `_` when naming private properties
+  - 在私有属性前加上一个 `_` 前缀
 
     ```javascript
     // bad
@@ -1214,7 +1211,7 @@ Heavily inspired by them as well:
     this._firstName = 'Panda';
     ```
 
-  - When saving a reference to `this` use `_this`.
+  - 当你要保存 `this` 值时，可以将其命名为 `_this`.
 
     ```javascript
     // bad
@@ -1242,7 +1239,7 @@ Heavily inspired by them as well:
     }
     ```
 
-  - Name your functions. This is helpful for stack traces.
+  - 命名你的函数。这将有助于堆栈跟踪。
 
     ```javascript
     // bad
@@ -1259,10 +1256,10 @@ Heavily inspired by them as well:
 **[⬆ back to top](#table-of-contents)**
 
 
-## Accessors
+## 访问器
 
-  - Accessor functions for properties are not required
-  - If you do make accessor functions use getVal() and setVal('hello')
+  - 属性访问器并不是必须的。
+  - 如果你确实需要，请命名为 getVal() 和 setVal('hello') 的形式
 
     ```javascript
     // bad
@@ -1278,7 +1275,7 @@ Heavily inspired by them as well:
     dragon.setAge(25);
     ```
 
-  - If the property is a boolean, use isVal() or hasVal()
+  - 如果属性是一个布尔值，请使用 isVal() 或 hasVal()
 
     ```javascript
     // bad
@@ -1292,7 +1289,7 @@ Heavily inspired by them as well:
     }
     ```
 
-  - It's okay to create get() and set() functions, but be consistent.
+  - 你也可以创建 get() 和 set() 函数, 但一定要保持一致.
 
     ```javascript
     function Jedi(options) {
@@ -1312,9 +1309,9 @@ Heavily inspired by them as well:
 
 **[⬆ back to top](#table-of-contents)**
 
-## Constructors
+## 构造函数
 
-  - Assign methods to the prototype object, instead of overwriting the prototype with a new object. Overwriting the prototype makes inheritance impossible: by resetting the prototype you'll overwrite the base!
+  - 在原型链上增加属性，而不是覆写原型链。
 
     ```javascript
     function Jedi() {
@@ -1342,7 +1339,7 @@ Heavily inspired by them as well:
     };
     ```
 
-  - Methods can return `this` to help with method chaining.
+  - 你可以在方法中返回 `this` 从而来构建可链接的方法。
 
     ```javascript
     // bad
@@ -1377,7 +1374,7 @@ Heavily inspired by them as well:
     ```
 
 
-  - It's okay to write a custom toString() method, just make sure it works successfully and causes no side effects.
+  - 你可以创建一个自定义的`toString()`方法，但是你要确保它能正常工作并且没有其他副作用。
 
     ```javascript
     function Jedi(options) {
@@ -1396,7 +1393,7 @@ Heavily inspired by them as well:
 
 **[⬆ back to top](#table-of-contents)**
 
-**Books**
+**推荐的书**
 
   - [JavaScript: The Good Parts](http://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742) - Douglas Crockford
   - [JavaScript Patterns](http://www.amazon.com/JavaScript-Patterns-Stoyan-Stefanov/dp/0596806752) - Stoyan Stefanov
@@ -1412,7 +1409,7 @@ Heavily inspired by them as well:
   - [JSBooks](http://jsbooks.revolunet.com/)
   - [Third Party JavaScript](http://manning.com/vinegar/) - Ben Vinegar and Anton Kovalyov
 
-**Blogs**
+**推荐的博客**
 
   - [DailyJS](http://dailyjs.com/)
   - [JavaScript Weekly](http://javascriptweekly.com/)
