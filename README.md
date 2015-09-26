@@ -3,34 +3,33 @@
 ### 大部分的内容来源于 [Airbnb styleguide](https://github.com/airbnb/javascript)
 
 并且也参考其他一些资料:
+- @RisingStack's [Node.js styleguide](https://github.com/RisingStack/node-style-guide)
 - @caolan's [Node.js styleguide](http://caolanmcmahon.com/posts/nodejs_style_and_structure)
 - @felixge's [Node.js styleguide](https://github.com/felixge/node-style-guide)
 
 ## Table of Contents
 
-  1. [Types](#types)
-  1. [Objects](#objects)
-  1. [Arrays](#arrays)
-  1. [Strings](#strings)
-  1. [Functions](#functions)
-  1. [Properties](#properties)
-  1. [Variables](#variables)
+  1. [类型](#类型)
+  1. [对象](#对象)
+  1. [数组](#数组)
+  1. [字符串](#字符串)
+  1. [函数](#函数)
+  1. [属性](#属性)
+  1. [变量](#变量)
   1. [Requires](#requires)
-  1. [Callbacks](#callbacks)
+  1. [回调函数](#回调函数)
   1. [Try-catch](#try-catch)
-  1. [Hoisting](#hoisting)
+  1. [提升](#提升)
   1. [Conditional Expressions & Equality](#conditional-expressions--equality)
-  1. [Blocks](#blocks)
-  1. [Comments](#comments)
-  1. [Whitespace](#whitespace)
-  1. [Commas](#commas)
-  1. [Semicolons](#semicolons)
+  1. [代码块](#代码块)
+  1. [注释](#注释)
+  1. [空格](#空格)
+  1. [逗号](#逗号)
+  1. [分号](#分号)
   1. [Type Casting & Coercion](#type-casting--coercion)
-  1. [Naming Conventions](#naming-conventions)
-  1. [Accessors](#accessors)
-  1. [Constructors](#constructors)
-  1. [Contributors](#contributors)
-  1. [License](#license)
+  1. [命名约定](#命名约定)
+  1. [访问器](#访问器)
+  1. [构造器](#构造器)
 
 ## 类型
 
@@ -339,7 +338,7 @@
 **[⬆ back to top](#table-of-contents)**
 
 
-## Variables
+## 变量
 
   - 始终使用 `var` 来声明变量. 否则会创建全局变量，污染全局命名空间.
 
@@ -495,7 +494,7 @@
 
 **[⬆ back to top](#table-of-contents)**
 
-## Callbacks
+## 回调函数
 
   - 在回调函数中要始终检测错误
 
