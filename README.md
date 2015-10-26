@@ -30,6 +30,8 @@
   1. [命名约定](#命名约定)
   1. [访问器](#访问器)
   1. [构造器](#构造器)
+  1. [ES6箭头函数](#ES6箭头函数)
+  1. [ES6增强的对象字面量](#ES6增强的对象字面量)
 
 ## 类型
 
@@ -1391,6 +1393,91 @@
     ```
 
 **[⬆ back to top](#table-of-contents)**
+
+## ES6箭头函数
+
+  - 所有的Arrow Function的参数均使用 `()`包裹，即便只有一个参数：
+  
+    ```javascript
+    // good
+    let foo = (x) => x + 1;
+    
+    // bad
+    let foo = x => x + 1;
+    
+  - 定义函数尽量使用Arrow functions，而不是`function`关键字
+  
+    ```javascript
+    // good
+    let foo = () => {
+      // code  
+    };
+    
+    // bad
+    function foo() {
+      // code  
+    }
+    
+    // bad
+    let foo = function () {
+      // code  
+    }
+
+  除非当前场景不适合使用Arrow Function，如函数表达式需要自递归、需要运行时可变的`this`对象等。
+  
+  - 对于对象、类中的方法，使用增强的对象字面量
+  
+    ```javascript
+    // good
+    let foo = {
+      bar () {
+        // code  
+      }
+    }
+    
+    // bad
+    let foo = {
+      bar: () => {
+        // code 
+      }
+    }
+    
+    // bad
+    let foo = {
+      bar: function () {
+        // code
+      }
+    }
+    
+## ES6增强的对象字面量
+
+  - 可以在对象总直接定义方法
+  
+    ```javascript
+    // good
+    let foo = {
+      bar() {
+        // code  
+      }
+    }
+  
+  - 可使用通过计算得出的键值
+  
+    ```javascript
+    // 当你需要的时候使用
+    let MY_KEY = 'bar';
+    let foo = {
+      [MY_KEY + 'Hash']: 123
+    }
+  
+  - 与当前scope中同名变量的简写
+
+    ```javascript
+    // bad
+    let bar = 'bar';
+    let foo = {
+        bar // 相当于bar: bar
+    };
 
 **推荐的书**
 
