@@ -1,37 +1,50 @@
 # Node.js 风格指南
 
-### 大部分的内容来源于 [Airbnb styleguide](https://github.com/airbnb/javascript)
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-并且也参考其他一些资料:
-- @RisingStack's [Node.js styleguide](https://github.com/RisingStack/node-style-guide)
-- @caolan's [Node.js styleguide](http://caolanmcmahon.com/posts/nodejs_style_and_structure)
-- @felixge's [Node.js styleguide](https://github.com/felixge/node-style-guide)
+- [Node.js 风格指南](#nodejs-%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97)
+    - [大部分的内容来源于 [Airbnb styleguide](https://github.com/airbnb/javascript)](#%E5%A4%A7%E9%83%A8%E5%88%86%E7%9A%84%E5%86%85%E5%AE%B9%E6%9D%A5%E6%BA%90%E4%BA%8E-airbnb-styleguidehttpsgithubcomairbnbjavascript)
+  - [Table of Contents](#table-of-contents)
+  - [类型](#%E7%B1%BB%E5%9E%8B)
+  - [对象](#%E5%AF%B9%E8%B1%A1)
+  - [数组](#%E6%95%B0%E7%BB%84)
+  - [字符串](#%E5%AD%97%E7%AC%A6%E4%B8%B2)
+  - [函数](#%E5%87%BD%E6%95%B0)
+  - [属性](#%E5%B1%9E%E6%80%A7)
+  - [变量](#%E5%8F%98%E9%87%8F)
+  - [Requires](#requires)
+  - [回调函数](#%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0)
+  - [Try catch](#try-catch)
+  - [提升](#%E6%8F%90%E5%8D%87)
+  - [条件表达式 & 相等性](#%E6%9D%A1%E4%BB%B6%E8%A1%A8%E8%BE%BE%E5%BC%8F-&-%E7%9B%B8%E7%AD%89%E6%80%A7)
+  - [代码块](#%E4%BB%A3%E7%A0%81%E5%9D%97)
+  - [注释](#%E6%B3%A8%E9%87%8A)
+  - [空格](#%E7%A9%BA%E6%A0%BC)
+  - [逗号](#%E9%80%97%E5%8F%B7)
+  - [分号作为语句块的结束](#%E5%88%86%E5%8F%B7%E4%BD%9C%E4%B8%BA%E8%AF%AD%E5%8F%A5%E5%9D%97%E7%9A%84%E7%BB%93%E6%9D%9F)
+  - [类型转换 & 强制类型转换](#%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-&-%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2)
+  - [命名约定](#%E5%91%BD%E5%90%8D%E7%BA%A6%E5%AE%9A)
+  - [访问器](#%E8%AE%BF%E9%97%AE%E5%99%A8)
+  - [构造函数](#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0)
+  - [ES6箭头函数](#es6%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0)
+  - [ES6增强的对象字面量](#es6%E5%A2%9E%E5%BC%BA%E7%9A%84%E5%AF%B9%E8%B1%A1%E5%AD%97%E9%9D%A2%E9%87%8F)
+  - [ES6模板字符串](#es6%E6%A8%A1%E6%9D%BF%E5%AD%97%E7%AC%A6%E4%B8%B2)
+  - [ES6函数参数增强](#es6%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E5%A2%9E%E5%BC%BA)
+  - [ES6新增关键字let和const](#es6%E6%96%B0%E5%A2%9E%E5%85%B3%E9%94%AE%E5%AD%97let%E5%92%8Cconst)
+  - [ES6迭代器和`for..of`](#es6%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%92%8Cforof)
+  - [The JavaScript Style Guide Guide](#the-javascript-style-guide-guide)
+- [};](#)
 
-## Table of Contents
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-  1. [类型](#类型)
-  1. [对象](#对象)
-  1. [数组](#数组)
-  1. [字符串](#字符串)
-  1. [函数](#函数)
-  1. [属性](#属性)
-  1. [变量](#变量)
-  1. [Requires](#requires)
-  1. [回调函数](#回调函数)
-  1. [Try-catch](#try-catch)
-  1. [提升](#提升)
-  1. [Conditional Expressions & Equality](#conditional-expressions--equality)
-  1. [代码块](#代码块)
-  1. [注释](#注释)
-  1. [空格](#空格)
-  1. [逗号](#逗号)
-  1. [分号](#分号)
-  1. [Type Casting & Coercion](#type-casting--coercion)
-  1. [命名约定](#命名约定)
-  1. [访问器](#访问器)
-  1. [构造器](#构造器)
-  1. [ES6箭头函数](#ES6箭头函数)
-  1. [ES6增强的对象字面量](#ES6增强的对象字面量)
+### 大部分的内容来源于 
+
+- [Airbnb styleguide](https://github.com/airbnb/javascript)
+- RisingStack's [Node.js styleguide](https://github.com/RisingStack/node-style-guide)
+- Caolan's [Node.js styleguide](http://caolanmcmahon.com/posts/nodejs_style_and_structure)
+- Felixge's [Node.js styleguide](https://github.com/felixge/node-style-guide)
 
 ## 类型
 
@@ -1478,6 +1491,55 @@
     let foo = {
         bar // 相当于bar: bar
     };
+    
+## ES6模板字符串
+
+  - 不推荐使用多行字符串，因为不方便代码缩进
+    
+    ```javascript
+    // bad
+    let html = 
+    `<div>
+      <p>Hello world</p>
+    </div>`
+  
+  - 推荐使用ES6的字符串变量替换功能
+  
+    ```javascript
+    //good
+    let message = `Hello ${name}, it's ${time} now`;
+
+## ES6函数参数增强
+
+  - 推荐使用默认值、剩余参数等功能，这能让你的函数声明和调用变得更为简洁
+  
+    ```javascript
+    var foo = (x = 1) => x + 1;
+    foo(); // 2
+    
+    var extend = (source, ...args) => {
+        for (let target in args) {
+            for (let name in Object.keys(target) {
+                if (!source.hasOwnProperty(name) {
+                    source[name] = target[name];
+                }
+            }
+        }
+    };
+    
+    var extensions = [
+        {name: 'Zhang'},
+        {age: 17},
+        {work: 'hard'}
+    ];
+    extend({}, ...extensions);
+    
+## ES6新增关键字let和const
+
+  - 推荐使用`let`全面代替`var`，因为它创建了块级作用域变量
+  - 建议自由在逻辑上是常量的情况才使用 `const`
+  
+## ES6迭代器和`for..of`
 
 **推荐的书**
 
