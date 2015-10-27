@@ -4,9 +4,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [Node.js 风格指南](#nodejs-%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97)
-    - [大部分的内容来源于 [Airbnb styleguide](https://github.com/airbnb/javascript)](#%E5%A4%A7%E9%83%A8%E5%88%86%E7%9A%84%E5%86%85%E5%AE%B9%E6%9D%A5%E6%BA%90%E4%BA%8E-airbnb-styleguidehttpsgithubcomairbnbjavascript)
-  - [Table of Contents](#table-of-contents)
+  - [参考资料](#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99)
   - [类型](#%E7%B1%BB%E5%9E%8B)
   - [对象](#%E5%AF%B9%E8%B1%A1)
   - [数组](#%E6%95%B0%E7%BB%84)
@@ -34,17 +32,23 @@
   - [ES6函数参数增强](#es6%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E5%A2%9E%E5%BC%BA)
   - [ES6新增关键字let和const](#es6%E6%96%B0%E5%A2%9E%E5%85%B3%E9%94%AE%E5%AD%97let%E5%92%8Cconst)
   - [ES6迭代器和`for..of`](#es6%E8%BF%AD%E4%BB%A3%E5%99%A8%E5%92%8Cforof)
-  - [The JavaScript Style Guide Guide](#the-javascript-style-guide-guide)
+  - [ES6生成器](#es6%E7%94%9F%E6%88%90%E5%99%A8)
+  - [ES6模块](#es6%E6%A8%A1%E5%9D%97)
+  - [ES6新增集合Map和Set](#es6%E6%96%B0%E5%A2%9E%E9%9B%86%E5%90%88map%E5%92%8Cset)
+  - [ES6 Promise](#es6-promise)
+  - [推荐的书](#%E6%8E%A8%E8%8D%90%E7%9A%84%E4%B9%A6)
+  - [推荐的博客](#%E6%8E%A8%E8%8D%90%E7%9A%84%E5%8D%9A%E5%AE%A2)
 - [};](#)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-### 大部分的内容来源于 
+### 参考资料
 
 - [Airbnb styleguide](https://github.com/airbnb/javascript)
 - RisingStack's [Node.js styleguide](https://github.com/RisingStack/node-style-guide)
 - Caolan's [Node.js styleguide](http://caolanmcmahon.com/posts/nodejs_style_and_structure)
 - Felixge's [Node.js styleguide](https://github.com/felixge/node-style-guide)
+- Baidu EFE: [ES6 develop overview](http://efe.baidu.com/blog/es6-develop-overview/)
 
 ## 类型
 
@@ -1417,6 +1421,7 @@
     
     // bad
     let foo = x => x + 1;
+    ```
     
   - 定义函数尽量使用Arrow functions，而不是`function`关键字
   
@@ -1435,6 +1440,7 @@
     let foo = function () {
       // code  
     }
+    ```
 
   除非当前场景不适合使用Arrow Function，如函数表达式需要自递归、需要运行时可变的`this`对象等。
   
@@ -1461,6 +1467,7 @@
         // code
       }
     }
+    ```
     
 ## ES6增强的对象字面量
 
@@ -1473,6 +1480,7 @@
         // code  
       }
     }
+    ```
   
   - 可使用通过计算得出的键值
   
@@ -1482,6 +1490,7 @@
     let foo = {
       [MY_KEY + 'Hash']: 123
     }
+    ```
   
   - 与当前scope中同名变量的简写
 
@@ -1491,6 +1500,7 @@
     let foo = {
         bar // 相当于bar: bar
     };
+    ```
     
 ## ES6模板字符串
 
@@ -1502,12 +1512,16 @@
     `<div>
       <p>Hello world</p>
     </div>`
+    ```
   
-  - 推荐使用ES6的字符串变量替换功能
+  - 推荐使用ES6的字符串变量替换功能，这样可以取代字符串拼接
   
     ```javascript
     //good
+    let name = 'weiwei';
+    let time = '22:00';
     let message = `Hello ${name}, it's ${time} now`;
+    ```
 
 ## ES6函数参数增强
 
@@ -1533,15 +1547,62 @@
         {work: 'hard'}
     ];
     extend({}, ...extensions);
-    
+    ```
+
 ## ES6新增关键字let和const
 
   - 推荐使用`let`全面代替`var`，因为它创建了块级作用域变量
   - 建议自由在逻辑上是常量的情况才使用 `const`
-  
+
+
 ## ES6迭代器和`for..of`
 
-**推荐的书**
+  - 推荐使用`for..of`来迭代集合
+  
+    ```javascript
+    // good
+    for (let item in array) {
+      
+    }
+    ```
+  
+## ES6生成器
+
+  - 谨慎使用生成器，异步控制器的未来是`async`和`await`这两个关键字
+
+    ```javascript
+    // good
+    async function save(Something) {  
+      try {
+        await Something.save(); // 等待await后面的代码执行完，类似于yield
+      } catch (ex) {
+        //error handling
+      }
+      console.log('success');
+    }
+    ```
+    
+## ES6模块
+
+  - 谨慎使用ES6的模块系统，Node项目建议使用CommonJS方案，因为ES6并没有包括模块加载器规范
+  - 或者使用ES6的模块定义，但使用ADM作为运行时模块解决方案
+    - 保持使用`import`和`export`进行模块的引入和定义，可以安全地使用命名`export`和默认`export`
+    - 在使用Babel转换时，配置`modules: 'amd'`转换为AMD的模块定义
+    - 不要依赖`SystemJS`这样的ES6模块加载器
+    
+## ES6新增集合Map和Set
+
+  - 当你的元素或者键值有可能不是字符串时，无条件地使用`Map`和`Set`
+  - 有移除操作的需求时，使用`Map`和`Set`
+  - 当仅需要一个不可重复的集合时，使用`Set`优先于普通对象，而不要使用`{foo: true}`这样的对象
+  - 当需要遍历功能时，使用`Map`和`Set`，因为其可以简单地使用`for..of`进行遍历
+  - `WeakMap`和`WeakSet`是没有办法模拟实现的，因此不要使用
+  
+## ES6 Promise
+
+  - 建议所有异步均使用Promise实现
+
+## 推荐的书
 
   - [JavaScript: The Good Parts](http://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742) - Douglas Crockford
   - [JavaScript Patterns](http://www.amazon.com/JavaScript-Patterns-Stoyan-Stefanov/dp/0596806752) - Stoyan Stefanov
@@ -1557,7 +1618,7 @@
   - [JSBooks](http://jsbooks.revolunet.com/)
   - [Third Party JavaScript](http://manning.com/vinegar/) - Ben Vinegar and Anton Kovalyov
 
-**推荐的博客**
+## 推荐的博客
 
   - [DailyJS](http://dailyjs.com/)
   - [JavaScript Weekly](http://javascriptweekly.com/)
@@ -1573,7 +1634,7 @@
 
 **[⬆ back to top](#table-of-contents)**
 
-## The JavaScript Style Guide Guide
+**The JavaScript Style Guide Guide**
 
   - [Reference](https://github.com/airbnb/javascript/wiki/The-JavaScript-Style-Guide-Guide)
 
