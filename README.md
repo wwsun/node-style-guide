@@ -1675,13 +1675,13 @@
   - [Dustin Diaz](http://dustindiaz.com/)
   - [nettuts](http://net.tutsplus.com/?s=javascript)
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#)**
 
 **The JavaScript Style Guide Guide**
 
   - [Reference](https://github.com/airbnb/javascript/wiki/The-JavaScript-Style-Guide-Guide)
 
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#)**
 
 # };
