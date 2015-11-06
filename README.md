@@ -83,7 +83,7 @@
     console.log(foo[0], bar[0]); // => 9, 9
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#)**
 
 ## 对象
 
@@ -116,7 +116,7 @@
     };
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#)**
 
 ## 数组
 
@@ -168,7 +168,7 @@
     }
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#)**
 
 
 ## 字符串
@@ -261,7 +261,7 @@
     }
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#)**
 
 
 ## 函数
@@ -318,7 +318,7 @@
     }
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#)**
 
 
 
@@ -354,7 +354,7 @@
     var isJedi = getProp('jedi');
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#)**
 
 
 ## 变量
@@ -476,6 +476,8 @@
     }
     ```
 
+**[⬆ back to top](#)**
+
 ## Requires
 
   - 使用如下顺序来组织node代码中的require语句:
@@ -510,8 +512,7 @@
 
   ```
 
-
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#)**
 
 ## 回调函数
 
@@ -579,7 +580,7 @@
   }
   ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#)**
 
 
 ## Try catch
@@ -625,7 +626,7 @@
   }
   ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#)**
 
 ## 提升
 
@@ -709,9 +710,7 @@
 
   - 更多信息请参考 [JavaScript Scoping & Hoisting](http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting) by [Ben Cherry](http://www.adequatelygood.com/)
 
-**[⬆ back to top](#table-of-contents)**
-
-
+**[⬆ back to top](#)**
 
 ## 条件表达式 & 相等性
 
@@ -758,7 +757,7 @@
 
   - 更多信息请参考 [Truth Equality and JavaScript](http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108) by Angus Croll
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#)**
 
 
 ## 代码块
@@ -787,7 +786,7 @@
     }
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#)**
 
 
 ## 注释
@@ -881,8 +880,8 @@
     }
   ```
 
-**[⬆ back to top](#table-of-contents)**
 
+**[⬆ back to top](#)**
 
 ## 空格
 
@@ -996,7 +995,7 @@
         .call(tron.led);
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#)**
 
 ## 逗号
 
@@ -1020,35 +1019,7 @@
     };
     ```
 
-  - Additional trailing comma: **Nope.** This can cause problems with IE6/7 and IE9 if it's in quirksmode. Also, in some implementations of ES3 would add length to an array if it had an additional trailing comma. This was clarified in ES5 ([source](http://es5.github.io/#D)):
-
-  > Edition 5 clarifies the fact that a trailing comma at the end of an ArrayInitialiser does not add to the length of the array. This is not a semantic change from Edition 3 but some implementations may have previously misinterpreted this.
-
-    ```javascript
-    // bad
-    var hero = {
-      firstName: 'Kevin',
-      lastName: 'Flynn',
-    };
-
-    var heroes = [
-      'Batman',
-      'Superman',
-    ];
-
-    // good
-    var hero = {
-      firstName: 'Kevin',
-      lastName: 'Flynn'
-    };
-
-    var heroes = [
-      'Batman',
-      'Superman'
-    ];
-    ```
-
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#)**
 
 
 ## 分号作为语句块的结束
@@ -1075,7 +1046,7 @@
     })();
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#)**
 
 
 ## 类型转换 & 强制类型转换
@@ -1123,7 +1094,7 @@
     var val = parseInt(inputValue, 10);
     ```
 
-  - If for whatever reason you are doing something wild and `parseInt` is your bottleneck and need to use Bitshift for [performance reasons](http://jsperf.com/coercion-vs-casting/3), leave a comment explaining why and what you're doing.
+  - 如果某种情况下你为了性能原因需要避免使用`parseInt`，而是使用移位操作符，请添加注释说明
 
     ```javascript
     // good
@@ -1135,7 +1106,7 @@
     var val = inputValue >> 0;
     ```
 
-  - **Note:** Be careful when using bitshift operations. Numbers are represented as [64-bit values](http://es5.github.io/#x4.3.19), but Bitshift operations always return a 32-bit integer ([source](http://es5.github.io/#x11.7)). Bitshift can lead to unexpected behavior for integer values larger than 32 bits. [Discussion](https://github.com/airbnb/javascript/issues/109). Largest signed 32-bit Int is 2,147,483,647:
+  - **Note:** 在使用移位操作符时需要特别谨慎. 数字使用 [64-bit values](http://es5.github.io/#x4.3.19)表示的, 但是移位操作符总是返回32-bit的整数 ([source](http://es5.github.io/#x11.7)). 这对大于32-bit的整数而言，这会导致意向不到的行为. [Discussion](https://github.com/airbnb/javascript/issues/109). 最大的有符号32位整数是 2,147,483,647:
 
     ```javascript
     2147483647 >> 0 //=> 2147483647
@@ -1158,7 +1129,7 @@
     var hasAge = !!age;
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#)**
 
 
 ## 命名约定
@@ -1271,7 +1242,7 @@
     };
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#)**
 
 
 ## 访问器
@@ -1325,7 +1296,7 @@
     };
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#)**
 
 ## 构造函数
 
@@ -1409,7 +1380,7 @@
     };
     ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ back to top](#)**
 
 ## ES6箭头函数
 
@@ -1468,6 +1439,9 @@
       }
     }
     ```
+
+**[⬆ back to top](#)**    
+
     
 ## ES6增强的对象字面量
 
@@ -1501,7 +1475,10 @@
         bar // 相当于bar: bar
     };
     ```
-    
+
+**[⬆ back to top](#)**
+
+        
 ## ES6模板字符串
 
   - 不推荐使用多行字符串，因为不方便代码缩进
@@ -1522,6 +1499,8 @@
     let time = '22:00';
     let message = `Hello ${name}, it's ${time} now`;
     ```
+
+**[⬆ back to top](#)**
 
 ## ES6函数参数增强
 
@@ -1549,10 +1528,33 @@
     extend({}, ...extensions);
     ```
 
+**[⬆ back to top](#)**
+
+
 ## ES6新增关键字let和const
 
-  - 推荐使用`let`全面代替`var`，因为它创建了块级作用域变量
-  - 建议自由在逻辑上是常量的情况才使用 `const`
+  - 推荐使用`let`全面代替`var`，因为它创建了块级作用域变量（变量只在代码块内生效），尤其是`for`循环
+  
+    ```javascript
+    for(let i = 0; i < 10; i++) {
+      foo[i].onclick = function() {
+        console.log(i);
+      };
+    }    
+    ```
+    
+  - 建议自由在逻辑上是常量的情况才使用 `const`，它代表常量，定的同时必须赋值
+  
+    ```javascript
+    // good
+    const MAX_CAT_SIZE_KG = 3000; 
+
+    // bad
+    MAX_CAT_SIZE_KG = 5000; // SyntaxError
+    MAX_CAT_SIZE_KG++; // nice try, but still a SyntaxError
+    ```
+
+**[⬆ back to top](#)**
 
 
 ## ES6迭代器和`for..of`
@@ -1567,6 +1569,10 @@
     ```
     
   - 避免使用`for...in`来迭代结合对象，它通常用于迭代对象的**属性名**
+
+
+**[⬆ back to top](#)**
+
   
 ## ES6生成器
 
@@ -1583,14 +1589,21 @@
       console.log('success');
     }
     ```
+
+**[⬆ back to top](#)**
+
     
 ## ES6模块
 
-  - 谨慎使用ES6的模块系统，Node项目建议使用CommonJS方案，因为ES6并没有包括模块加载器规范
+  - 谨慎使用ES6的模块系统，Node项目建议使用CommonJS方案，因为ES6并没有包括模块加载器规范，[参考文章](http://www.csdn.net/article/2015-04-30/2824595-Modules-in-ES6) 
   - 或者使用ES6的模块定义，但使用ADM作为运行时模块解决方案
     - 保持使用`import`和`export`进行模块的引入和定义，可以安全地使用命名`export`和默认`export`
     - 在使用Babel转换时，配置`modules: 'amd'`转换为AMD的模块定义
     - 不要依赖`SystemJS`这样的ES6模块加载器
+
+
+**[⬆ back to top](#)**
+
     
 ## ES6新增集合Map和Set
 
@@ -1599,10 +1612,38 @@
   - 当仅需要一个不可重复的集合时，使用`Set`优先于普通对象，而不要使用`{foo: true}`这样的对象
   - 当需要遍历功能时，使用`Map`和`Set`，因为其可以简单地使用`for..of`进行遍历
   - `WeakMap`和`WeakSet`是没有办法模拟实现的，因此不要使用
+
+**[⬆ back to top](#)**
   
 ## ES6 Promise
 
   - 建议所有异步均使用Promise实现
+  
+    ```javascript
+    // 构造一个Promise实例
+    var promise = new Promise(function(resolve, reject) {
+      // ... some code
+    
+      if (/* 异步操作成功 */){
+        resolve(value);
+      } else {
+        reject(error);
+      }
+    });
+    ```
+    
+  - Promise实例生成后，可以用`then`方法分别制定Resolved状态和Reject状态的回调函数
+  
+    ```javascript
+    promise.then(function(value) {
+      // success
+    }, function(value) {
+      // failure
+    });
+    ```
+
+**[⬆ back to top](#)**
+
 
 ## 推荐的书
 
