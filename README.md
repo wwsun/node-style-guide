@@ -1557,14 +1557,16 @@
 
 ## ES6迭代器和`for..of`
 
-  - 推荐使用`for..of`来迭代集合
+  - 推荐使用`for..of`来迭代集合对象（Array, Map, Set, arguments对象）的**值**
   
     ```javascript
     // good
-    for (let item in array) {
-      
+    for (let item of array) {
+      // do somehting
     }
     ```
+    
+  - 避免使用`for...in`来迭代结合对象，它通常用于迭代对象的**属性名**
   
 ## ES6生成器
 
