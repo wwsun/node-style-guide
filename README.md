@@ -1384,7 +1384,19 @@
 
 ## ES6箭头函数
 
-  - 所有的Arrow Function的参数均使用 `()`包裹，即便只有一个参数：
+  - 当你必须使用函数表达式（或传递一个匿名函数时），使用箭头函数符号（能够自动绑定`this`到父对象）
+  
+    ```javascript
+    // bad
+    [1, 2, 3].map(function (x) {
+      return x * x;  
+    });
+    
+    // good
+    [1, 2, 3].map((x) => x * x);
+    ```
+  
+  - 建议所有的Arrow Function的参数均使用 `()`包裹，即便只有一个参数：
   
     ```javascript
     // good
@@ -1392,28 +1404,7 @@
     
     // bad
     let foo = x => x + 1;
-    ```
-    
-  - 定义函数尽量使用Arrow functions，而不是`function`关键字
-  
-    ```javascript
-    // good
-    let foo = () => {
-      // code  
-    };
-    
-    // bad
-    function foo() {
-      // code  
-    }
-    
-    // bad
-    let foo = function () {
-      // code  
-    }
-    ```
-
-  除非当前场景不适合使用Arrow Function，如函数表达式需要自递归、需要运行时可变的`this`对象等。
+    ``
   
   - 对于对象、类中的方法，使用增强的对象字面量
   
